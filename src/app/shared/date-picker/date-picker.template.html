@@ -1,0 +1,33 @@
+<!-- ST: date picker -->
+<div class="form-group">
+  <div class="form-box icon-left calendar"
+       [class.icon-mat]="_bsConfig.withTimepicker === true">
+    <input type="text" style="display: block"
+           cdkOverlayOrigin
+           #d1="cdkOverlayOrigin"
+           [placeholder]="placeholder || _bsConfig.dateInputFormat"
+           class="form-control"
+           [ngClass]="size && size !== '' ? 'form-control-' + size : ''"
+           [ngModel]="_selectDate | date : changeDateFormat(_bsConfig.dateInputFormat)"
+           (click)="toggleOpen()">
+    <span class="clear-btn"
+          *ngIf="_selectDate !== undefined"
+          (click)="deleteDate()">
+          <mat-icon class="mat-icon">close</mat-icon>
+          </span>
+    <ng-template cdkConnectedOverlay
+                 [cdkConnectedOverlayOrigin]="d1"
+                 [cdkConnectedOverlayOpen]="open">
+      <bs-datepicker-inline [bsValue]="_selectDate"
+                            (bsValueChange)="changeDate($event)"
+                            [minDate]="minDate"
+                            [maxDate]="maxDate"
+                            [bsConfig]="_bsConfig">
+      </bs-datepicker-inline>
+      <div *ngIf="open"
+           class="overlay-bg"
+           (click)="open = false"></div>
+    </ng-template>
+  </div>
+</div>
+<!-- EN: date picker -->

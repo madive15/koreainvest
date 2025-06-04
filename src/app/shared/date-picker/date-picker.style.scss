@@ -1,0 +1,254 @@
+@import './src/styles-variables.scss';
+//////달력 작게?
+$date-calendar-minW: 220px;
+$date-calendar-minH: 175px;
+$date-calendar-padding: 6px 10px;
+$date-header-btn-size: 24px;
+$date-font-size: 11px;
+$date-cell-size: 24px;
+$time-up-x: 4px;
+$time-down-x: 5px;
+$time-left-y: 8px;
+$time-right-y: 74px;
+
+.bs-datepicker-head {
+  min-width: $date-calendar-minW;
+  height: 40px;
+  padding: 6px;
+  button {
+    font-size: $date-font-size;
+    line-height: $date-font-size - 1px;
+    vertical-align: middle;
+    &.current {
+      padding: 0 10px;
+    }
+    &.previous, &.next{
+      width: $date-header-btn-size;
+      height: $date-header-btn-size;
+      span {
+        font-size: $date-header-btn-size - 4px;
+      }
+    }
+  }
+}
+.bs-datepicker-body {
+  min-width: $date-calendar-minW;
+  min-height: $date-calendar-minH;
+  padding: $date-calendar-padding;
+  border-radius: 0;
+}
+.bs-datepicker-body table {
+  font-size: $date-font-size;
+}
+.bs-datepicker-body table.days span {
+  font-size: $date-font-size;
+  width: $date-cell-size;
+  height: $date-cell-size;
+  line-height: $date-cell-size - 1px;
+}
+.bs-datepicker-body table.months td {
+  height: $date-cell-size * 2 - 8px;
+  span {
+    font-size: $date-font-size;
+  }
+}
+.bs-datepicker-body table.years td span {
+  font-size: $date-font-size + 1px;
+  line-height: $date-cell-size * 1.4;
+  width: $date-cell-size * 1.4;
+  height: $date-cell-size * 1.4;
+  margin: 4px auto !important;
+}
+//////
+.bs-datepicker {
+  background-color: transparent;
+  //box-shadow: none;
+}
+.bs-datepicker-container {
+  padding: 0 !important;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 #aaa;
+}
+
+.bs-datepicker-body table td.week span {
+  color: $primary !important;
+}
+
+.bs-datepicker-body table td span.selected,
+.bs-datepicker-head,
+.bs-datepicker-head, .bs-datepicker button:active,
+.bs-datepicker-body table td.selected span,
+.bs-datepicker-body table td span[class*="select-"]:after,
+.bs-datepicker-body table td[class*="select-"] span:after,
+.bs-datepicker-body table td.active-week span:hover,
+.theme-green .btn-today-wrapper .btn-success, .theme-green .btn-clear-wrapper .btn {
+  background-color: $primary;
+  border: 1px solid transparent !important;
+  color: #fff !important;
+}
+
+.bs-datepicker-buttons {
+  padding: 5px !important;
+}
+
+.bs-datepicker-custom-range {
+  padding: 0;
+  background-color: #fff;
+}
+.bs-datepicker-body table td span.is-highlighted:not(.disabled):not(.selected) {
+  background-color: lighten($primary, 30);
+}
+.bs-datepicker-body table.days span.in-range:not(.select-start):not(.disabled):before {
+  background-color: lighten($primary, 38);
+}
+.bs-datepicker-predefined-btns button {
+  margin-bottom: 0;
+  padding: 2px 15px;
+  color: $black;
+  background-color: #fff;
+  border-radius: 0;
+  font-size: $font-size-sm;
+  transition: 0.3s;
+  //opacity: 0.7;
+  &:hover {
+    background-color: lighten($primary, 35) !important;
+    //color: $primary;
+  }
+  &.selected, &:active {
+    background-color: $primary !important;
+    color: #fff;
+   &:hover {
+     background-color: lighten($primary, 10) !important;
+   }
+  }
+}
+
+// timepicker
+.bs-timepicker-field {
+  width: 34px !important;
+  padding: 2px 4px !important;
+  font-size: 10px;
+  margin-right: 20px;
+  &.is-invalid {
+    background: none;
+  }
+}
+// timepicker 화살표 커스텀
+.bs-chevron {
+  width: 4px !important;
+  height: 4px !important;
+  border-width: 1px 0 0 1px !important;
+}
+.btn-link {
+  padding: 3px 8px;
+  position: absolute;
+  z-index: 1;
+  transition: 0.3s;
+  &:hover {
+    background-color: lighten($primary, 37)
+  }
+}
+.bs-datepicker .bs-timepicker-in-datepicker-container timepicker table tbody{
+  tr:nth-child(2) {
+    td.form-group {
+      position: relative;
+      &:nth-child(1) {
+        &:has(.is-invalid) {
+          &:after {
+            content: '잘못된 입력';
+            padding: 2px 4px;
+            border-radius: 3px;
+            background-color: $danger;
+            color: #fff;
+            font-size: 9px;
+            white-space: nowrap;
+            position: absolute;
+            top: -14px;
+            left: 0;
+          }
+        }
+      }
+      &:nth-child(3) {
+        &:has(.is-invalid) {
+          &:after {
+            content: '잘못된 입력';
+            padding: 2px 4px;
+            border-radius: 3px;
+            background-color: $danger;
+            color: #fff;
+            font-size: 9px;
+            white-space: nowrap;
+            position: absolute;
+            top: -14px;
+            left: 0;
+          }
+        }
+      }
+    }
+    td:last-child {
+      button {
+        font-size: 11px;
+        padding: 6px;
+      }
+    }
+  }
+  tr:nth-of-type(odd) {
+    position: relative;
+    td {
+      display: none;
+      position: absolute;
+      &:first-child { // 좌
+        display: inline-block;
+      }
+      &:nth-child(3) { // 우
+        display: inline-block;
+      }
+    }
+  }
+  tr:first-child { // 위
+    td:first-child {
+      .btn-link {
+        top: $time-up-x;
+        left: $time-left-y;
+      }
+    }
+    td:nth-child(3) {
+      .btn-link {
+        top: $time-up-x;
+        left: $time-right-y;
+      }
+    }
+  }
+  tr:last-child { //아래
+    td:first-child {
+      .btn-link {
+        bottom: $time-down-x;
+        left: $time-left-y;
+      }
+    }
+    td:nth-child(3) {
+      .btn-link {
+        bottom: $time-down-x;
+        left: $time-right-y;
+      }
+    }
+  }
+}
+
+
+.ngx-today {
+  color: $primary;
+}
+
+//툴팁
+.tooltip-inner{
+  background-color: darken($primary, 10);
+  padding: 0.2rem 0.4rem;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: darken($primary, 10);
+}
+
+/****************************** EN: ngx-datepicker *************************************************/

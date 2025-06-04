@@ -1,0 +1,87 @@
+<div class="style-guide-wrap" [style.padding-left]="left + 'px'">
+  <div
+    class="style-guide-aside"
+    [class.minimize]="minimize"
+    ngResizable
+    [rzHandles]="'e'"
+    (rzStop)="onResize($event)"
+    (rzResizing)="onResize($event)"
+  >
+    <h2 class="aside-title">
+      <span class="aside-title-icon">
+        <mat-icon class="md-16">draw</mat-icon>
+      </span>
+      Style Guide
+    </h2>
+    <button class="btn-toggle-minimize" (click)="toggleMinimize()">
+      <i class="fa fa-chevron-left"></i>
+    </button>
+    <div class="style-guide-nav">
+      <aside-menu
+        [items]="menus"
+        [minimize]="minimize"
+        [activeIndex]="menuActiveIndex"
+        [currentUrls]="currentUrls"
+        (valueChange)="routeNav($event)"
+        [bindLabel]="'name'"
+      >
+      </aside-menu>
+    </div>
+  </div>
+  <div class="style-guide-container">
+    <div class="style-guide-content-bg"></div>
+    <div class="style-guide-content">
+      <!-- ST : breadcrumb-->
+      <div class="dtk-breadcrumb">
+        <ul>
+          <li>
+            <button [routerLink]="['/main']">
+              {{ 'nav.home' | translate }}
+            </button>
+          </li>
+          <li>
+            <button [routerLink]="['/style-guide']">Style Guide</button>
+          </li>
+          <li *ngFor="let bc of breadcrumb; index as i;">
+            <button [matMenuTriggerFor]="subMenu">{{bc.name}}</button>
+            <mat-menu #subMenu class="breadcrumb-children">
+              <button
+                mat-menu-item
+                *ngFor="let mn of bc.menu; index as ii"
+                [routerLink]="[ mn.link ]"
+                [class.active]="i === bc.index"
+              >
+                {{mn.name}}
+              </button>
+            </mat-menu>
+          </li>
+        </ul>
+      </div>
+      <!-- EN : breadcrumb-->
+
+      <div class="page-title">
+        <h2 class="tit">{{title}}</h2>
+        <!-- ST: 설명 일반 -->
+        <p class="f-b5" [innerHTML]="desc"></p>
+      </div>
+
+      <!--  [@routeAnimations]="o.isActivated" -->
+      <div class="content">
+        <router-outlet #o="outlet"></router-outlet>
+      </div>
+
+      <!-- EN: 설명 일반 -->
+      <!--<h3>두번째 제목</h3>
+      <h4>세번째 제목</h4>-->
+      <!-- ST: Guide Notice -->
+      <!--<div class="guide-notice">
+        <p>
+          가이드가 여러줄 들어갑니다. <br />
+          가이드가 여러줄 들어갑니다. <br />
+          가이드가 여러줄 들어갑니다.
+        </p>
+      </div>-->
+      <!-- EN: Guide Notice -->
+    </div>
+  </div>
+</div>

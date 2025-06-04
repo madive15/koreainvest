@@ -1,0 +1,312 @@
+@import "styles-variables";
+// 첫번째는 체크박스 사이즈 두번째는 라벨 폰트 사이즈 check width 네번째는 check height
+$check-sizes: (
+  xs: $input-icon-xs $font-size-xs $input-checked-w-xs $input-checked-h-xs $input-checked-t-xs $input-checked-l-xs,
+  sm: $input-icon-sm $font-size-sm $input-checked-w-sm $input-checked-h-sm $input-checked-t-sm $input-checked-l-sm,
+  lg: $input-icon-lg $font-size-lg $input-checked-w-lg $input-checked-h-lg $input-checked-t-lg $input-checked-l-lg,
+  xl: $input-icon-xl $font-size-xl $input-checked-w-xl $input-checked-h-xl $input-checked-t-xl $input-checked-l-xl
+);
+
+// 첫번째는 라디오 사이즈 두번째는 라벨 폰트 사이즈 안에 원(before)
+$radio-sizes: (
+  xs: 10 $font-size-xs 4.5,
+  sm: 12 $font-size-sm 6,
+  lg: 19 $font-size-lg 9.5,
+  xl: 22 $font-size-xl 11.5
+);
+
+$switch-sizes: (
+  //  1:width, 2:height, 3:font-size
+  xs: 12px     6px       $font-size-xs,
+  sm: 20px     10px      $font-size-sm,
+  lg: 40px     20px      $font-size-lg,
+  //xl: 45px 25px $font-size-xl 11.5
+);
+
+///// checkbox
+.mgc {
+  position: relative;
+  width: $input-icon;
+  height: $input-icon;
+  background-clip: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0 0.4rem 0 0; // 0.2rem 0.4rem 0 0; //-0.15px 3px 0 0;
+  vertical-align: text-bottom;
+  border-radius: 3px;
+  transition: background-color 0.25s;
+  background-color: #fff;
+  border: 1px solid #d7d7d7;
+  cursor: pointer;
+  &:checked:after {
+    content: '';
+    display: block;
+    height: $input-checked-h;
+    width: $input-checked-w;
+    border: 0 solid #FFF;
+    border-width: 0 0 2px 2px;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: $input-checked-t;
+    left: $input-checked-l;
+  }
+
+  &:disabled {
+    opacity: 0.65;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 2px #38a7ff;
+  }
+
+  /* Size */
+  @each $key, $size in $check-sizes {
+    &.mgc-#{$key} {
+      width: #{nth($size, 1)};
+      height: #{nth($size, 1)};
+
+      & + label {
+        font-size: #{nth($size, 2)};
+      }
+
+      &:checked:after {
+        width: #{nth($size, 3)};
+        height: #{nth($size, 4)};
+        top: #{nth($size, 5)};
+        left: #{nth($size, 6)};
+      }
+    }
+  }
+
+  &:checked {
+    background-color: #424242;
+    border-color: #d7d7d7;
+    @each $key, $color in $colors {
+      &.mgc-#{$key} {
+        background-color: $color;
+        border-color: $color;
+      }
+    }
+  }
+
+  &:checked:after {
+    border-color: #FFF;
+  }
+  & + label {
+    user-select: none;
+    cursor: pointer;
+  }
+}
+
+.mgc-circle {
+  border-radius: 50%;
+}
+
+
+//// radio
+input[type="radio"].mgr {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background-clip: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: -0.15px 0.6px 0 0;
+  vertical-align: text-bottom;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #d7d7d7;
+  cursor: pointer;
+  /* 바로 뒤에 오는 라벨 */
+  & + label {
+    display: inline-block;
+    margin: 0 15px 0 5px;
+    font-size: $font-size-base;
+    cursor: pointer;
+  }
+  /* Size */
+  @each $key, $size in $radio-sizes {
+    &.mgr-#{$key} {
+      width: #{nth($size, 1)}  + px;
+      height: #{nth($size, 1)} + px;
+      & + label {
+        font-size: #{nth($size, 2)};
+      }
+      &:checked:before {
+        width: #{nth($size, 3)} + px;
+        height: #{nth($size, 3)} + px;
+      }
+    }
+  }
+
+  &:disabled {
+    opacity: 0.65;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    transition: width 0.25s, height 0.25s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:checked:before {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+  }
+
+  //&:focus {
+  //  outline: none;
+  //  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 2px #38a7ff;
+  //}
+
+  &:checked {
+    border: 1px solid #555;
+    @each $key, $color in $colors {
+      &.mgr-#{$key} {
+        border-color: $color;
+        &:before {
+          background-color: $color;
+        }
+        &:focus {
+          outline: none;
+          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 2px $color;
+        }
+      }
+    }
+  }
+
+  &:checked:before {
+    background-color: #555;
+  }
+}
+
+//// switch
+.mgc-switch {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  width: 34px;
+  height: 17px;
+  border: 1px solid #dfdfdf;
+  outline: 0;
+  border-radius: 16px;
+  box-sizing: border-box;
+  background: #dfdfdf;
+  &:before, &:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+    transition: transform 0.3s;
+  }
+  &:before {
+    width: 32px;
+    height: 15px;
+    background-color: #e0e0e0;
+  }
+  &:after {
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Size */
+  @each $key, $size in $switch-sizes {
+    &.mgc-#{$key} {
+      width: calc(#{nth($size, 1)} + 2px);
+      height: calc(#{nth($size, 2)} + 2px);
+      &:before {
+        width: #{nth($size, 1)};
+        height: #{nth($size, 2)};
+      }
+      &:after {
+        width: #{nth($size, 2)};
+        height: #{nth($size, 2)};
+        //background-color: red;
+      }
+      & + label {
+        font-size: #{nth($size, 3)};
+      }
+
+      &:checked:after {
+        top: 0;
+        left:0;
+        transform: translateX(calc(#{nth($size, 2)}));
+      }
+    }
+  }
+
+  &:checked {
+    &:before {
+      transform: scale(0);
+    }
+    &:after {
+      transform: translateX(17px);
+    }
+    &.mgc-primary {
+      border-color: $primary;
+      background-color: $primary;
+    }
+
+    &.mgc-success {
+      border-color: $success;
+      background-color: $success;
+    }
+
+    &.mgc-info {
+      border-color: $info;
+      background-color: $info;
+    }
+
+    &.mgc-warning {
+      border-color: $warning;
+      background-color: $warning;
+    }
+
+    &.mgc-danger {
+      border-color: $danger;
+      background-color: $danger;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+
+  //.mgc-lg.mgc-switch {
+  //  height: 25px;
+  //  width: 45px;
+  //}
+  //
+  //.mgc-lg.mgc-switch:before {
+  //  height: 23px;
+  //  width: 43px;
+  //}
+  //
+  //.mgc-lg.mgc-switch:after {
+  //  width: 23px;
+  //  height: 23px;
+  //}
+  //
+  //.mgc-lg.mgc-switch:checked:after {
+  //  top: 0;
+  //  left: 2px;
+  //  transform: translateX(18px);
+  //}
+
+}
+

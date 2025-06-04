@@ -1,0 +1,408 @@
+<div class="d-flex">
+  <div class="component-wrap button" #contentWrap>
+    <h3 #anchor #basic>Basic</h3>
+    <p>컬러별 기본 버튼</p>
+    <div class="style-guide-example d-flex column">
+      <div class="flex-1">
+        <h5>Bootstrap button
+          <code>
+            &lt;button type="button" class="btn btn-primary" &gt;&lt;/button&gt;
+          </code>
+        </h5>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+      </div>
+      <div class="flex-1">
+        <h5>Material button
+          <code>
+            &lt;button mat-button class="btn btn-primary"&gt;&lt;/button&gt;
+          </code>
+        </h5>
+        <div>
+          <button mat-button class="btn btn-primary">Primary</button>
+          <button mat-button class="btn btn-secondary">Secondary</button>
+          <button mat-button class="btn btn-success">Success</button>
+          <button mat-button class="btn btn-info">Info</button>
+          <button mat-button class="btn btn-warning">Warning</button>
+          <button mat-button class="btn btn-danger">Danger</button>
+          <button mat-button class="btn btn-light">Light</button>
+          <button mat-button class="btn btn-dark">Dark</button>
+          <button mat-button color="dark">
+            <mat-icon class="md-16">delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <h3 #anchor #outline>Outline</h3>
+    <p>컬러별 라인 버튼</p>
+    <div class="style-guide-example">
+      <button type="button" class="btn btn-outline-primary">Primary</button>
+      <button type="button" class="btn btn-outline-secondary">Secondary</button>
+      <button type="button" class="btn btn-outline-success">Success</button>
+      <button type="button" class="btn btn-outline-info">Info</button>
+      <button type="button" class="btn btn-outline-warning">Warning</button>
+      <button type="button" class="btn btn-outline-danger">Danger</button>
+      <button type="button" class="btn btn-outline-light">Light</button>
+      <button type="button" class="btn btn-outline-dark">Dark</button>
+    </div>
+
+    <h3 #anchor #size>Size</h3>
+    <p>사이즈별 버튼</p>
+    <div class="style-guide-example">
+      <div>
+        <h5>Bootstrap button</h5>
+        <button type="button" class="btn btn-primary btn-xl">XLarge Button</button>
+        <button type="button" class="btn btn-primary btn-lg ">Large Button</button>
+        <button type="button" class="btn btn-primary">Default Button</button>
+        <button type="button" class="btn btn-primary btn-sm">Small Button</button>
+        <button type="button" class="btn btn-primary btn-xs">XSmall Button</button>
+      </div>
+
+      <div>
+        <button type="button" class="btn btn-outline-primary btn-xl">XLarge Button</button>
+        <button type="button" class="btn btn-outline-primary btn-lg ">Large Button</button>
+        <button type="button" class="btn btn-outline-primary">Default Button</button>
+        <button type="button" class="btn btn-outline-primary btn-sm">Small Button</button>
+        <button type="button" class="btn btn-outline-primary btn-xs">XSmall Button</button>
+      </div>
+
+      <div class="mt-4">
+        <h5>Material button</h5>
+        <button mat-button class="btn btn-primary btn-xl">XLarge Button</button>
+        <button mat-button class="btn btn-primary btn-lg">Large Button</button>
+        <button mat-button class="btn btn-primary">Default Button</button>
+        <button mat-button class="btn btn-primary btn-sm">Small Button</button>
+        <button mat-button class="btn btn-primary btn-xs">XSmall Button</button>
+      </div>
+    </div>
+
+    <h3 #anchor #block>Block</h3>
+    <p>Block 버튼  <a matTooltip="부트스트랩 홈페이지" href="https://getbootstrap.com/docs/5.3/components/buttons/#block-buttons" target="_blank"><i class="fa fa-external-link"></i></a></p>
+    <div class="d-flex column">
+      <div class="style-guide-example">
+        <h6>bootstrap button</h6>
+        <code>&lt;div class="d-grid gap-1" &gt;&lt;button type="btn btn-primary"&gt;&lt;/button&gt;&lt;/div&gt;</code>
+        <div class="d-grid gap-1">
+          <button class="btn btn-primary" type="button">Block button</button>
+          <button type="button" class="btn btn-secondary">Block button</button>
+          <button type="button" class="btn btn-outline-primary">Block button</button>
+          <button type="button" class="btn btn-outline-secondary">Block button</button>
+        </div>
+      </div>
+      <div class="style-guide-example">
+        <h6>mat-button</h6>
+        <code>&lt;div class="d-grid gap-1" &gt;&lt;button mat-button type="btn btn-primary"&gt;&lt;/button&gt;&lt;/div&gt;</code>
+        <div class="d-grid gap-1">
+          <button mat-button class="btn btn-primary" type="button">Block button</button>
+          <button mat-button class="btn btn-secondary" type="button">Block button</button>
+        </div>
+      </div>
+
+      <!--<div>
+        <button type="button" class="btn btn-primary btn-block">Block button</button>
+        <button type="button" class="btn btn-secondary btn-block">Block button</button>
+        <button type="button" class="btn btn-outline-primary btn-block">Block button</button>
+        <button type="button" class="btn btn-outline-secondary btn-block">Block button</button>
+      </div>-->
+    </div>
+
+    <h3 #anchor #disabled>Disabled State</h3>
+    <p>컬러별 disabled 버튼</p>
+    <div class="style-guide-example">
+      <div>
+        <button type="button" class="btn btn-primary" disabled>Primary</button>
+        <button type="button" class="btn btn-secondary" disabled>Secondary</button>
+        <button type="button" class="btn btn-success" disabled>Success</button>
+        <button type="button" class="btn btn-info" disabled>Info</button>
+        <button type="button" class="btn btn-warning" disabled>Warning</button>
+        <button type="button" class="btn btn-danger" disabled>Danger</button>
+        <button type="button" class="btn btn-light" disabled>Light</button>
+        <button type="button" class="btn btn-dark" disabled>Dark</button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline-primary" disabled>Primary</button>
+        <button type="button" class="btn btn-outline-secondary" disabled>Secondary</button>
+        <button type="button" class="btn btn-outline-success" disabled>Success</button>
+        <button type="button" class="btn btn-outline-info" disabled>Info</button>
+        <button type="button" class="btn btn-outline-warning" disabled>Warning</button>
+        <button type="button" class="btn btn-outline-danger" disabled>Danger</button>
+        <button type="button" class="btn btn-outline-light" disabled>Light</button>
+        <button type="button" class="btn btn-outline-dark" disabled>Dark</button>
+      </div>
+    </div>
+
+    <h3 #anchor #iconLabel>Icon Label</h3>
+    <p>Icon Label 버튼</p>
+    <div class="style-guide-example">
+      <div>
+        <button type="button" class="btn btn-primary btn-labeled btn-xl">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-primary btn-labeled btn-lg">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-primary btn-labeled">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-primary btn-labeled btn-sm">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-primary btn-labeled btn-xs">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-secondary btn-labeled btn-xl">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+        <button type="button" class="btn btn-secondary btn-labeled btn-lg">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+        <button type="button" class="btn btn-secondary btn-labeled">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+        <button type="button" class="btn btn-secondary btn-labeled btn-sm">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+        <button type="button" class="btn btn-secondary btn-labeled btn-xs">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline-primary btn-labeled btn-xl">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-labeled btn-lg">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-labeled">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-labeled btn-sm">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-labeled btn-xs">
+          <span class="btn-label"><i class="fa fa-check"></i></span>확인
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-labeled btn-xl">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-labeled btn-lg">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-labeled">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-labeled btn-sm">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-labeled btn-xs">
+          <span class="btn-label"><i class="fa fa-times"></i></span>취소
+        </button>
+      </div>
+    </div>
+
+    <h3 #anchor #iconOnly>Icon Only</h3>
+    <p>Icon만 있는 버튼</p>
+    <div class="style-guide-example">
+      <div class="d-flex wrap">
+        <div class="d-flex column flex-1">
+          <h5>컬러별 아이콘 버튼</h5>
+          <div>
+            <button type="button" class="btn btn-primary btn-icon"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-secondary btn-icon"><i class="fa fa-times"></i></button>
+            <button type="button" class="btn btn-success btn-icon"><i class="fa fa-search"></i></button>
+            <button type="button" class="btn btn-info btn-icon"><i class="fa fa-info-circle"></i></button>
+            <button type="button" class="btn btn-warning btn-icon"><i class="fa fa-exclamation"></i></button>
+            <button type="button" class="btn btn-danger btn-icon"><i class="fa fa-exclamation-triangle"></i></button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-outline-primary btn-icon"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-outline-secondary btn-icon"><i class="fa fa-times"></i></button>
+            <button type="button" class="btn btn-outline-success btn-icon"><i class="fa fa-search"></i></button>
+            <button type="button" class="btn btn-outline-info btn-icon"><i class="fa fa-info-circle"></i></button>
+            <button type="button" class="btn btn-outline-warning btn-icon"><i class="fa fa-exclamation"></i></button>
+            <button type="button" class="btn btn-outline-danger btn-icon"><i class="fa fa-exclamation-triangle"></i>
+            </button>
+          </div>
+        </div>
+        <div class="d-flex column flex-1">
+          <h5>Rounded 아이콘 버튼</h5>
+          <div>
+            <button type="button" class="btn btn-primary btn-icon btn-circle"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-secondary btn-icon btn-circle"><i class="fa fa-times"></i></button>
+            <button type="button" class="btn btn-success btn-icon btn-circle"><i class="fa fa-search"></i></button>
+            <button type="button" class="btn btn-info btn-icon btn-circle"><i class="fa fa-info-circle"></i></button>
+            <button type="button" class="btn btn-warning btn-icon btn-circle"><i class="fa fa-exclamation"></i></button>
+            <button type="button" class="btn btn-danger btn-icon btn-circle"><i class="fa fa-exclamation-triangle"></i>
+            </button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-circle"><i class="fa fa-check"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary btn-icon btn-circle"><i class="fa fa-times"></i>
+            </button>
+            <button type="button" class="btn btn-outline-success btn-icon btn-circle"><i class="fa fa-search"></i>
+            </button>
+            <button type="button" class="btn btn-outline-info btn-icon btn-circle"><i class="fa fa-info-circle"></i>
+            </button>
+            <button type="button" class="btn btn-outline-warning btn-icon btn-circle"><i class="fa fa-exclamation"></i>
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-icon btn-circle"><i
+              class="fa fa-exclamation-triangle"></i></button>
+          </div>
+        </div>
+        <div class="d-flex column flex-1">
+          <h5>사이즈별 아이콘 버튼</h5>
+          <div>
+            <button type="button" class="btn btn-primary btn-icon btn-xl"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-primary btn-icon btn-lg"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-primary btn-icon"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-primary btn-icon btn-sm"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-primary btn-icon btn-xs"><i class="fa fa-check"></i></button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-xl"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-lg"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-icon"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-sm"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-xs"><i class="fa fa-check"></i></button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary btn-icon btn-circle btn-xl"><i class="fa fa-check"></i>
+            </button>
+            <button type="button" class="btn btn-primary btn-icon btn-circle btn-lg"><i class="fa fa-check"></i>
+            </button>
+            <button type="button" class="btn btn-primary btn-icon btn-circle"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-primary btn-icon btn-circle btn-sm"><i class="fa fa-check"></i>
+            </button>
+            <button type="button" class="btn btn-primary btn-icon btn-circle btn-xs"><i class="fa fa-check"></i>
+            </button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-circle btn-xl"><i class="fa fa-check"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-circle btn-lg"><i class="fa fa-check"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-circle"><i class="fa fa-check"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-circle btn-sm"><i class="fa fa-check"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary btn-icon btn-circle btn-xs"><i class="fa fa-check"></i>
+            </button>
+          </div>
+        </div>
+        <div class="d-flex column flex-1">
+          <h5>Raised 아이콘 버튼</h5>
+          <div>
+            <button type="button" class="btn btn-primary btn-icon btn-raised"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-secondary btn-icon btn-raised"><i class="fa fa-times"></i></button>
+            <button type="button" class="btn btn-success btn-icon btn-raised"><i class="fa fa-search"></i></button>
+            <button type="button" class="btn btn-info btn-icon btn-raised"><i class="fa fa-info-circle"></i></button>
+            <button type="button" class="btn btn-warning btn-icon btn-raised"><i class="fa fa-exclamation"></i></button>
+            <button type="button" class="btn btn-danger btn-icon btn-raised"><i class="fa fa-exclamation-triangle"></i>
+            </button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary btn-icon btn-raised btn-circle"><i class="fa fa-check"></i>
+            </button>
+            <button type="button" class="btn btn-secondary btn-icon btn-raised btn-circle"><i class="fa fa-times"></i>
+            </button>
+            <button type="button" class="btn btn-success btn-icon btn-raised btn-circle"><i class="fa fa-search"></i>
+            </button>
+            <button type="button" class="btn btn-info btn-icon btn-raised btn-circle"><i class="fa fa-info-circle"></i>
+            </button>
+            <button type="button" class="btn btn-warning btn-icon btn-raised btn-circle"><i
+              class="fa fa-exclamation"></i>
+            </button>
+            <button type="button" class="btn btn-danger btn-icon btn-raised btn-circle"><i
+              class="fa fa-exclamation-triangle"></i></button>
+          </div>
+        </div>
+        <div class="d-flex column flex-1">
+          <h5>mat-icon-button</h5>
+          <div class="d-flex align-center">
+            <code>기본</code>
+            <button mat-icon-button class="btn-icon">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" class="btn-icon">
+              <mat-icon>home</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" class="btn-icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+          </div>
+
+          <div class="d-flex align-center">
+            <code>Size</code>
+            <button mat-icon-button color="warn" class="btn-icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" class="btn-icon btn-sm">
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" class="btn-icon btn-xs">
+              <mat-icon>favorite</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 #anchor #progress>Progress Button</h3>
+    <p>전송 중 버튼</p>
+    <div class="style-guide-example">
+      <button type="button" class="btn btn-primary" [ladda]="loading" (click)="onClick()">Click Me</button>
+    </div>
+
+    <h3 #anchor #toggle>Toggle Button</h3>
+    <p>토글 버튼</p>
+    <div class="style-guide-example">
+      <p>{{singleModel}}</p>
+      <label class="btn btn-primary" btnCheckbox
+             btnCheckboxTrue="Yes"
+             btnCheckboxFalse="No"
+             role="button"
+             [(ngModel)]="singleModel">Toggle Button</label>
+    </div>
+
+    <h3 #anchor #radio>Radio Buttons</h3>
+    <p>라디오 형태 버튼</p>
+    <div class="style-guide-example">
+      <div>
+        <div class="btn-group" role="group">
+          <ng-container *ngFor="let radio of radioActive; let i=index;">
+            <input type="radio" class="btn-check" name="btnradio" autocomplete="off"
+                   [id]="'btnradio'+radio"
+                   (change)="activeRadio = i;"
+                   [checked]="i==activeRadio">
+            <label class="btn btn-outline-secondary" [class.active]="i==activeRadio"
+                   [for]="'btnradio'+radio">Radio {{ radio }}</label>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+
+    <h3 #anchor #closeButtons>Close Buttons</h3>
+    <p>Bootstrap 기본 닫기 버튼 <code>class="btn-close btn-#size"</code></p>
+    <div class="style-guide-example">
+      <div>
+        <button class="btn-close btn-xs"></button>
+        <button class="btn-close btn-sm"></button>
+        <button class="btn-close"></button>
+        <button class="btn-close btn-lg"></button>
+        <button class="btn-close btn-xl"></button>
+      </div>
+    </div>
+
+  </div>
+  <aside-menu-right [menu]="buttonMenu"
+                    [anchor]="anchors"></aside-menu-right>
+</div>

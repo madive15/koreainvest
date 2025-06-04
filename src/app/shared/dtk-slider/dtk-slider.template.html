@@ -1,0 +1,77 @@
+<div class="form-group dtk-slider">
+  <label [ngClass]="labelClass">{{label}}</label>
+  <ng-container *ngIf="_mode !== 'range'">
+    <div class="dtk-slider-wrap">
+      <ngx-slider [(value)]="_value"
+                  (valueChange)="valueChanged()"
+                  class="linear-filter"
+                  [options]="options"></ngx-slider>
+      <div class="dtk-slider-input">
+        <span class="form-control">
+          <span class="dtk-slider-input-value"
+                [attr.contenteditable]="!_disabled"
+                [textContent]="_value"
+                (keydown)="checkNumber($event, 'value')"
+                (blur)="changeValue($event, 'value')"></span>
+          <span class="dtk-slider-input-unit" *ngIf="unit && unit !== ''">{{unit}}</span>
+        </span>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="_mode === 'range'">
+    <!--<div class="linear-value-range">
+      <div class="linear-value-range-item from">
+        <div class="linear-value-input">
+          <span [attr.contenteditable]="!_disabled"
+                [textContent]="_value"
+                (keydown)="checkNumber($event, 'value')"
+                (blur)="changeValue($event, 'value')">
+          </span>
+          <span style="display:inline-block; color:#999; margin-left: 5px;">
+            {{ _value | numeralFormat: format}} {{unit}}
+          </span>
+        </div>
+      </div>
+      <div class="linear-value-range-item to">
+        <div class="linear-value-input">
+          <span [attr.contenteditable]="!_disabled"
+                [textContent]="_highValue"
+                (blur)="changeValue($event, 'highValue')"
+                (keydown)="checkNumber($event, 'highValue')">
+          </span>
+          <span style="display:inline-block; color:#999; margin-left: 5px;">{{unit}}</span>
+        </div>
+      </div>
+    </div>-->
+    <div class="dtk-slider-wrap">
+      <div class="dtk-slider-input from">
+        <span class="form-control">
+          <span class="dtk-slider-input-value"
+                [attr.contenteditable]="!_disabled"
+                [textContent]="_value"
+                (keydown)="checkNumber($event, 'value')"
+                (blur)="changeValue($event, 'value')"></span>
+          <span class="dtk-slider-input-unit" *ngIf="unit && unit !== ''">{{unit}}</span>
+        </span>
+      </div>
+      <ngx-slider [(value)]="_value"
+                  (userChangeEnd)="onUserChangeEnd($event)"
+                  class="linear-filter"
+                  [(highValue)]="_highValue"
+                  [options]="options"></ngx-slider>
+      <div class="dtk-slider-input">
+        <span class="form-control">
+          <span class="dtk-slider-input-value"
+                [attr.contenteditable]="!_disabled"
+                [textContent]="_highValue"
+                (keydown)="checkNumber($event, 'highValue')"
+                (blur)="changeValue($event, 'highValue')"></span>
+          <span class="dtk-slider-input-unit" *ngIf="unit && unit !== ''">{{unit}}</span>
+        </span>
+      </div>
+    </div>
+
+
+  </ng-container>
+</div>

@@ -1,0 +1,941 @@
+@import "./styles-variables";
+
+.alert {
+  font-size: 12px;
+  border-left-width: 5px !important;
+  .alert-icon {
+    margin-right: 8px;
+  }
+  .btn-close {
+    top: 3px !important;
+    padding: $btn-padding !important;
+    margin-right: 0 !important;
+    margin-bottom: 0;
+  }
+}
+.alert-dismissible {
+  .btn-close {
+    top: 3px !important;
+    padding: $btn-padding !important;
+    margin-right: 0 !important;
+    margin-bottom: 0;
+  }
+}
+
+$close-icon-size: (
+  // close btn icon size
+  xl: 1.25rem,
+  lg: 1rem,
+  sm: .6rem,
+  xs: .45rem
+);
+.btn-close {
+  font-size: .75rem;
+  @each $key, $value in $close-icon-size{
+    &.btn-#{$key} {
+      font-size: $value;
+    }
+  }
+}
+
+.btn {
+  &-primary,
+  &-info {
+    color: $btn-primary-color;
+
+    &:hover,&:active,&:focus,&:disabled {
+      color: $btn-primary-color;
+    }
+  }
+  &-outline-primary:hover,
+  &-outline-info:hover {
+    color: $btn-primary-color;
+  }
+
+
+
+  /**** Size Button ****/
+  &.btn-xl {
+    font-size: $font-size-xl;
+    padding: $btn-padding-y-xl $btn-padding-x-xl;
+  }
+  &.btn-xs {
+    border-radius: $border-radius-xs;
+    font-size: $font-size-xs;
+    padding: $btn-padding-y-xs $btn-padding-x-xs;
+  }
+
+//  /**** Block Button ****/
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
+
+  /**** Icon Label Button ****/
+  &.btn-labeled {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    span.btn-label {
+      position: relative;
+      left: $button-label;
+      display: inline-block;
+      padding: $btn-padding-y 0 $btn-padding-y $btn-padding-x;
+      border-radius: $border-radius-left;
+      //background: rgba(0, 0, 0, 0.15);
+    }
+
+    @each $key, $value in $button-size{
+      &.btn-#{$key} {
+        span.btn-label {
+          left: #{nth($value, 5)};
+          padding: #{nth($value, 1)} 0 #{nth($value, 1)} #{nth($value, 2)};
+        }
+     }
+    }
+  }
+
+  /**** Circle  Button ****/
+  &.btn-circle {
+    border-radius: 50%;
+  }
+
+
+  /**** Raised(shadow) button ****/
+  &.btn-raised {
+    box-shadow: $btn-raised-shadow;
+  }
+
+  /**** Split Button ****/
+  &.btn-split{
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 3px;
+    span{
+      cursor: pointer;
+      position: relative;
+      right: -4px;//$button-label;
+      display: inline-block;
+      padding: $btn-padding-y $btn-padding-x;
+      border-radius: $border-radius-right;
+    }
+
+    .btn-split-menu{
+      &:hover {
+        background-color: rgba(0, 0, 0, .2);
+      }
+    }
+
+    @each $key, $value in $button-size{
+      &.btn-#{$key} {
+        span {
+          //right: #{nth($value, 5)};
+          padding: #{nth($value, 1)}  #{nth($value, 2)};
+        }
+      }
+    }
+
+    &-rounded{
+      border-radius: $border-radius-round;
+      padding-right: 0;
+      span {
+        right: 0;
+      }
+      .btn-split-menu{
+        border-radius: 0 $border-radius-round $border-radius-round 0;
+      }
+    }
+  }
+
+  &.btn-toggle {
+    border-color: #ddd;
+    //background-color: transparent;
+    &.checked {
+      background-color: inherit;
+    }
+  }
+  &.active {
+    background-color: $primary !important;
+    border-color: $primary !important;
+  }
+}
+
+label.btn-split {
+  margin-bottom: 5px;
+  cursor: default !important;
+}
+
+.btn-split-group {
+  display: flex;
+  //button.btn {
+  //  margin-right: 0 !important;
+  //}
+
+  .btn-split-item {
+    border-radius: 0;
+    & > span {
+      //position: relative;
+      //right: $button-label;
+      //display: inline-block;
+    }
+    &:first-child{
+      border-radius: $border-radius-left;
+      //@each $key, $color in $colors{
+      //  &.btn-outline-#{$key}{
+      //    border-right: none;
+      //  }
+      //}
+    }
+    &:last-child{
+      border-radius: $border-radius-right;
+      @each $key, $color in $colors{
+        &.btn-outline-#{$key}{
+          border-left: none;
+        }
+      }
+    }
+  }
+
+  //.btn-split-item:first-child {
+  //  border-radius: $border-radius-left;
+  //  //padding: 0 $btn-padding-x;
+  //}
+  //
+  //.btn-split-item:last-child {
+  //  //padding: $btn-padding-y $btn-padding-x;
+  //  border-radius: $border-radius-right;
+  //}
+}
+
+.btn-group{
+  label { margin-right: 0; }
+  .btn-check:checked + .btn-outline-primary {
+    color: $btn-primary-color !important;
+  }
+}
+
+
+/**** Icon Only button ****/
+.btn-icon {
+  @include btn-icon($btn-padding);
+  .fa {
+    width: $font-size-base;
+    height: $font-size-base;
+  }
+
+  @each $key, $size in $button-size {
+    &.btn-#{$key}{
+      @include btn-icon(#{nth($size, 6)});
+      .fa {
+        width: #{nth($size, 3)};
+        height: #{nth($size, 3)};
+      }
+    }
+  }
+  &.btn-sm {
+    --mdc-icon-button-state-layer-size: 35px !important;
+    @include btn-icon($btn-padding-sm);
+
+    .fa {
+      width: 10px; //$font-size-sm;
+      height: 10px; //$font-size-sm;
+    }
+    .mat-icon {
+      font-size: $mat-btn-icon-sm;
+      width: $mat-btn-icon-sm;
+      height: $mat-btn-icon-sm;
+      line-height: $mat-btn-icon-sm;
+    }
+  }
+
+  &.btn-xs {
+    --mdc-icon-button-state-layer-size: 30px !important;
+    @include btn-icon($btn-padding-xs);
+
+    .fa {
+      width: $font-size-xs;
+      height: $font-size-xs;
+    }
+    .mat-icon {
+      font-size: $mat-btn-icon-xs;
+      width: $mat-btn-icon-xs;
+      height: $mat-btn-icon-xs;
+      line-height: $mat-btn-icon-xs;
+    }
+  }
+}
+
+/****************************** ST: form *************************************************/
+.form-control {
+  &-xs { // form-control-xs 새로 정의
+    min-height: $input-height-xs;
+    padding: $input-btn-padding-y-xs $input-btn-padding-x-xs;
+    @include font-size($font-size-xs);
+    @include border-radius($border-radius-xs);
+
+    &::file-selector-button {
+      padding: $input-btn-padding-y-xs $input-btn-padding-x-xs;
+      margin: (-$input-btn-padding-y-xs) (-$input-btn-padding-x-xs);
+      margin-inline-end: $input-btn-padding-x-xs;
+    }
+
+    &::-webkit-file-upload-button {
+      padding: $input-btn-padding-y-xs $input-btn-padding-x-xs;
+      margin: (-$input-btn-padding-y-xs) (-$input-btn-padding-x-xs);
+      margin-inline-end: $input-btn-padding-x-xs;
+    }
+  }
+  &:disabled {
+    opacity: .6;
+  }
+}
+
+.form-box { // icon, clear-btn은 form-box 안에
+  position: relative;
+
+  /*********************************ST: input-icons *********************************/
+  // 사이즈별 input-icon ( 1:font-size / 2:padding-left(right) / 3:padding-reset용(right일때) / 4: mat-icon 계산용
+  $input-icons-size: (
+    xs: $font-size-xs $input-icon-padding-xs $input-btn-padding-x-xs 0.12rem,
+    sm: $font-size-sm $input-icon-padding-sm $input-btn-padding-x-sm 0.15rem,
+    base: $font-size-base $input-icon-padding $input-btn-padding-x 0.25rem,
+    lg: $font-size-lg $input-icon-padding-lg $input-btn-padding-x-lg 0.3rem
+  );
+  @each $position in 'left', 'right' {
+    @each $key, $value in $input-icons-size {
+      &.icon-#{$position} {
+        //form-control의 padding값 결정
+        .form-control {
+          padding-#{$position}: $input-icon-padding;
+          position: relative;
+          @if $position == 'right' {
+            padding-left: $input-btn-padding-x;
+          }
+          &.form-control-#{$key} {
+            padding-#{$position}: #{nth($value,2)};
+            @if $position == 'right' {
+              padding-left: $input-btn-padding-x;
+            }
+          }
+        }
+
+        @if $position == 'right' {
+          &:has(.clear-btn) {
+            .form-control {
+              padding-right:  $input-icon-padding + $font-size-base * 2;//$font-size-base * 2;
+
+            }
+            .clear-btn {
+              right: $input-btn-padding-x * 2 + $font-size-base;
+            }
+            &:has(.form-control.form-control-#{$key}) {
+              .form-control-#{$key} {
+                padding-right: calc(#{nth($value,2)} + #{nth($value, 1)} * 2);
+              }
+              .clear-btn {
+                right: calc(#{nth($value, 3)} * 2 + #{nth($value, 1)}); // input-padding-x * 2 + input-icon size
+              }
+            }
+
+          }
+        }
+
+        &:before { // 아이콘 기본 설정
+          display: inline-block;
+          z-index: 1;
+          position: absolute;
+          top:40%;
+          color: $input-icon-color;
+          transform: translateY(-50%);
+        }
+        //아이콘 사이즈, 위치 결정
+        &:has(.form-control) {
+          &:before {
+            font-size: $font-size-base;
+            width: $font-size-base;
+            height: $font-size-base;
+            #{$position}: $input-btn-padding-x; // left or right
+          }
+          &.icon-mat:before {
+            font-size: $font-size-base * 1.3;
+            width: $font-size-base * 1.3;
+            height: $font-size-base * 1.3;
+            #{$position}: $input-btn-padding-x - 0.25rem;
+          }
+
+          &:has(.form-control-#{$key}) {
+            &:before {
+              font-size: #{nth($value, 1)};
+              width: #{nth($value, 1)};
+              height: #{nth($value, 1)};
+              #{$position}: #{nth($value, 3)};
+            }
+            &.icon-mat:before {
+              font-size: calc(#{nth($value, 1)} * 1.3);
+              width: calc(#{nth($value, 1)} * 1.3);
+              height: calc(#{nth($value, 1)} * 1.3);
+              #{$position}: calc(#{nth($value, 3)} - #{nth($value, 4)});
+            }
+          }
+        }
+      }
+    }
+  }
+
+  $input-icons: // $key  $icon(FontAwesome)  $mat-icon
+    search "\f002" "search",
+    //loading "\f110" "search",
+    calendar "\f133" "calendar_clock";
+    // 클래스명: "" 로 정의
+  @keyframes loading-spin {
+    //0% { transform: rotate(0deg) translateY(-50%); }
+    //100% { transform: rotate(359deg) translateY(-50%); }
+  }
+  @keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0); transform: rotate(0deg) translateY(-50%);}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%); transform: rotate(360deg) translateY(-50%);}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0); transform: rotate(480deg) translateY(-50%);}
+  }
+
+  /* 아이콘 모양 설정 */
+  &.icon-left, &.icon-right {
+    @each $key, $icon, $mat-icon in $input-icons {
+      &.#{$key}:before {
+        content: '#{$icon}';
+        font-family: FontAwesome;
+      }
+      &.icon-mat.#{$key}:before {
+        content: '#{$mat-icon}';
+        font-family: 'Material Symbols Outlined';
+      }
+    }
+    &.loading:before { // loading일 경우 spin
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      //inset: 0px;
+      top: 50%;
+      border-radius: 50%;
+      border: 1.5px solid $input-icon-color;
+      animation: //loading-spin 1s infinite steps(8);
+        prixClipFix 2.5s linear infinite ;
+      transform-origin: top;
+    }
+  }
+  /*********************************EN: input-icons *********************************/
+
+  /*********************************ST: input-celar & input-valid *********************************/
+  $input-clear-size: ( // 1: font-size, 2:label-padding, 3: clear size
+    xs: $font-size-xs $input-label-padding-xs 12px,
+    sm: $font-size-sm $input-label-padding-sm 15px,
+    base: $font-size-base $input-label-padding 18px,
+    lg: $font-size-lg $input-label-padding-lg 22px
+  );
+  .clear-btn {
+    position: absolute;
+    color: rgba(0, 0, 0, 0.35);
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    cursor: pointer;
+    &:hover {
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+  &:has(.clear-btn) {
+    @each $key, $value in $input-clear-size {
+      .form-control {
+        padding-right: $font-size-base * 2;
+        &.form-control-#{$key} {
+          padding-right: calc(#{nth($value, 1)} * 2);
+        }
+      }
+    }
+  }
+  .was-validated .form-control:valid, .form-control.is-valid, .was-validated .form-control:invalid, .form-control.is-invalid {
+    margin-bottom: 0;
+  }
+  .valid-feedback, .invalid-feedback {
+    margin: 0;
+  }
+
+  @each $key, $value in $input-clear-size {
+    &:has(.form-control) {
+      font-size: $font-size-base;
+      label {
+        font-size: $font-size-base;
+        line-height: $font-size-base;
+        max-height: $font-size-base * 2.1;
+        padding: $input-label-padding 0;
+      }
+      .clear-btn {
+        mat-icon {
+          font-size: 18px !important;
+          width: 18px !important;
+          height: 18px !important;
+          line-height: 18px !important;
+        }
+      }
+      .is-valid, .is-invalid {
+        background-size: 16px;
+      }
+      .valid-feedback, .invalid-feedback {
+        font-size: $font-size-base * 0.9;
+        padding: $input-label-padding 1px;
+      }
+
+      &:has(.form-control-#{$key}) {
+        font-size: #{nth($value,1)};
+        label {
+          font-size: #{nth($value,1)};
+          line-height: #{nth($value,1)};
+          max-height: calc(#{nth($value,1)} * 2.1);
+          padding: #{nth($value,2)} 0;
+        }
+        .clear-btn {
+          mat-icon {
+            font-size: #{nth($value,3)} !important;
+            width: #{nth($value,3)} !important;
+            height: #{nth($value,3)} !important;
+            line-height: #{nth($value,3)} !important;
+          }
+        }
+        .is-valid, .is-invalid {
+          background-size: calc(#{nth($value,3)} - 2px);
+        }
+        .valid-feedback, .invalid-feedback {
+          font-size: calc(#{nth($value,1)} * 0.9);
+          padding: #{nth($value,2)} 1px;
+        }
+      }
+    }
+  }
+  /*********************************EN: input-celar & input-valid *********************************/
+}
+
+.form-group {
+  height: 100%;
+  position: relative;
+
+  $input-label-size: ( // 1: font-size, 2:label-padding, 3: label의 max-height, 4: label의 line-height
+    xs: $font-size-xs $input-label-padding-xs 2.1 $line-height-xs,
+    sm: $font-size-sm $input-label-padding-sm 2.1 $line-height-sm,
+    base: $font-size-base $input-label-padding 2.2 $line-height-base,
+    lg: $font-size-lg $input-label-padding-lg 2.2 $line-height-lg
+  );
+  // input 사이즈에 따라 label 자동 사이징
+  @each $key, $value in $input-label-size {
+    &:has(.form-control) {
+      font-size: $font-size-base;
+      label {
+        font-size: $font-size-base;
+        line-height: $font-size-base;
+        max-height: $font-size-base * 2.2;
+        padding: $input-label-padding 0;
+      }
+
+      &:has(.form-control-#{$key}) {
+        font-size: #{nth($value, 1)};
+        label {
+          font-size: #{nth($value, 1)};
+          line-height: #{nth($value, 1)};
+          max-height: calc(#{nth($value, 1)} * #{nth($value, 3)});
+          padding: #{nth($value, 2)} 0;
+        }
+      }
+    }
+  }
+
+  &.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    input.form-control {
+      display: inline-block;
+      flex: 1;
+    }
+    &:has(.form-group) {
+      align-items: start;
+      label {
+        border: 1px solid transparent;
+      }
+      .form-group { flex: 1 }
+
+      @each $key, $value in $input-label-size {
+        &:has(.form-control) {
+          label {
+            line-height: $line-height-base;
+            padding: $input-btn-padding-y 0;
+          }
+          &:has(.form-control-#{$key}) {
+            label {
+              line-height: #{nth($value, 4)};
+              padding: #{nth($value, 2)} 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  &:has(> button) { //수정필요
+    align-items: end;
+  }
+  &:has(.form-group.flex) {
+    align-items: center;
+  }
+  .form-group {
+    button {
+      height: 100%;
+    }
+  }
+}*/
+
+label {
+  margin: 0;
+  //height: 100%;
+  &.required {
+    &::after {
+      content: "*";
+      color: $danger;
+      font-size: 0.7rem;
+      margin-left: 2px;
+    }
+  }
+}
+
+// autocomplete
+.mat-autocomplete-panel {
+  min-height: 70px !important;
+  position: absolute;
+  border-top: 1px solid #d0d0d0;
+  //top: 2px;
+  border-radius: 0 0 10px 10px;
+
+  &.visibility {
+    visibility: visible !important;
+  }
+}
+
+/****************************** EN: form *************************************************/
+
+
+/**** checkbox ****/
+.checkbox-group {
+  li {
+    margin-left: 10px;
+    &.select-all {
+      margin-left: 0;
+    }
+  }
+}
+
+/**************************** ST: Popover ***************************/
+.bs-popover-bottom > .popover-arrow, .bs-popover-auto[data-popper-placement^=bottom] > .popover-arrow {
+  top: calc(-0.4rem - 1px);
+}
+
+.bs-popover-end > .popover-arrow, .bs-popover-auto[data-popper-placement^=right] > .popover-arrow {
+  left: calc(-0.4rem - 1px);
+}
+
+.bs-popover-top > .popover-arrow, .bs-popover-auto[data-popper-placement^=top] > .popover-arrow {
+  bottom: calc(-0.4rem - 1px);
+}
+/**************************** EN: Popover ***************************/
+
+/**************************** ST: Color Picker ***************************/
+.dtk-color-picker {
+  .sketch-picker {
+    padding:0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    .sketch-wrap {
+      margin: 0 5px 0 0 !important;
+    }
+    .swatch {
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+  }
+  .chrome-picker {
+    box-shadow: none !important;
+    width: 200px !important;
+    border-radius: 0 !important;
+  }
+}
+
+.dtk-color-picker-full {
+  .chrome-picker {
+    box-shadow: none !important;
+    width: 280px !important;
+    border-radius: 0 !important;
+  }
+}
+
+.dtk-color-swatches {
+  .swatches-picker {
+    height: 170px !important;
+  }
+  .zDepth-1 {
+    box-shadow: none !important;
+  }
+  .swatches-overflow {
+    padding: 0 !important;
+    overflow-y: hidden !important;
+    margin-right: -5px;
+    height: 170px !important;
+  }
+  .swatches-group {
+    width: 15px !important;
+    margin-right: 5.5px !important;
+    .swatch {
+      width: 15px !important;
+      height: 15px !important;
+    }
+  }
+  .swatch-check {
+    margin-left: 0 !important;
+    svg {
+      width: 15px !important;
+      height: 15px !important;
+    }
+  }
+}
+/**************************** EN: Color Picker ***************************/
+
+
+/***** Speed dial *****/
+.speed-dial {
+  position: relative;
+  &-btn {
+    position: absolute;
+    display: inline-block;
+    .btn {
+      transform: rotate(0);
+      transition: transform .2s ease-in-out;
+      &.close{
+        transform: rotate(45deg);
+        transition: transform .2s ease-in-out;
+      }
+    }
+    &.top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &.right {
+      top: 50%;
+      right: 0;
+      transform: translate(0, -50%);
+    }
+    &.left {
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+    }
+    &.bottom {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    &.center{
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &-inner{
+    display: inline-flex !important;
+    button.btn {
+      margin: .2rem !important;
+      animation: .2s;
+      animation-name: speed-dial;
+    }
+
+    &.col{
+      flex-direction: column;
+    }
+    &.row-rev{
+      flex-direction: row-reverse;
+    }
+    &.col-rev {
+      flex-direction: column-reverse;
+    }
+    &.-row{
+      flex-direction: row !important;
+    }
+
+    &.speed-dial-circle{
+
+    }
+  }
+}
+
+@keyframes speed-dial {
+  //from {
+  //  margin-bottom: 0;
+  //  //height: 0;
+  //}
+  //
+  //to {
+  //  margin-bottom: 50%;
+  //  z-index: 1;
+  //  //height: 100%;
+  //}
+}
+
+/***** ST: Table *****/
+.table {
+  &.table-bordered { border-top: 2px solid $primary; }
+}
+.table > :not(:last-child) > :last-child > *{
+  //border-bottom-color: #dee2e6 !important;
+}
+/***** EN: Table *****/
+
+/********************** ST: Nav *******************************/
+.nav-tabs {
+  .nav-link {
+    padding: $btn-padding-y $btn-padding-x;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    line-height: 2.1em;
+  }
+}
+/********************** EN: Nav *******************************/
+
+/******** ST: card **********/
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border: none;
+  .card-img-top{
+    height: 150px;
+  }
+  &-item {
+    @include card-item(1px, #CCC, $card-border-radius, 8px, 250px, #FFF);
+    flex-direction: column;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-title {
+    &:hover { text-decoration: underline; }
+  }
+  &-text {
+    white-space: pre-wrap;
+  }
+  &-body{
+    border-top:$card-border-width solid $card-border-color;
+  }
+  &-footer{
+    background-color: $card-cap-bg;
+    display: flex;
+    &.flex-end {
+      justify-content: flex-end;
+    }
+    .fa {
+      margin-right: 3px;
+      color: #999;
+    }
+    span {
+      margin-right: 10px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+  .text-body-secondary {
+    display: inline-block;
+  }
+}
+/******** EN: card **********/
+// 첫번째는 라디오 사이즈 두번째는 라벨 폰트 사이즈 안에 원(before)
+$rating-sizes: (
+  xs: 10px,
+  sm: 12px,
+  lg: 19px,
+  xl: 22px
+);
+/**************** ST: Rating **************************/
+.bs-rating-star {
+  color: transparent;
+  font-size: 0;
+  margin-right: 2px;
+  &:before {
+    content: '\f006';
+    font-family: FontAwesome;
+    color: #DDD;
+    font-size: 14px;
+  }
+  &.active {
+    &:before {
+      content: '\f005';
+      color: #333;
+    }
+  }
+}
+
+@each $key, $color in $colors {
+  .bs-rating-#{$key} {
+    .bs-rating-star {
+      &.active {
+        &:before {
+          color: $color;
+        }
+      }
+    }
+  }
+}
+
+@each $key, $value in $rating-sizes {
+  .bs-rating-#{$key} {
+    .bs-rating-star {
+      &:before {
+        font-size: $value;
+      }
+    }
+  }
+}
+.rating-custom {
+  .bs-rating-star {
+    color: #DDD;
+    font-size: 14px;
+    &:before {
+      display: none;
+    }
+    &.active {
+      color: #333;
+    }
+  }
+  @each $key, $value in $rating-sizes {
+    &.bs-rating-#{$key} {
+      .bs-rating-star {
+        font-size: $value;
+      }
+    }
+  }
+
+  @each $key, $color in $colors {
+    &.bs-rating-#{$key} {
+      .bs-rating-star {
+        &.active {
+          color: $color;
+        }
+      }
+    }
+  }
+}
+/**************** EN: Rating **************************/

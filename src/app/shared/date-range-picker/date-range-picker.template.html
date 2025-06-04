@@ -1,0 +1,51 @@
+<!-- ST: range picker -->
+<div class="form-group" [class.input-group]="preNext">
+  <button class="btn btn-outline-secondary"
+          *ngIf="preNext"
+          (click)="moveToRange('pre')"
+          [ngClass]="size && size !== '' ? 'btn-' + size : ''">
+    <i class="fa fa-angle-left"></i>
+  </button>
+  <div class="form-box icon-left calendar"
+       [class.flex-1]="preNext"
+       [class.icon-mat]="_bsConfig.withTimepicker === true">
+    <!-- calendar-time 사용 시 icon-mat 클래스 추가 -->
+    <input type="text" style="display: block"
+           cdkOverlayOrigin
+           #d1="cdkOverlayOrigin"
+           [placeholder]="placeholder || _bsConfig.rangeInputFormat"
+           class="form-control"
+           [ngClass]="size && size !== '' ? 'form-control-' + size : ''"
+           [ngModel]="_selectDate | dateRange : _bsConfig.rangeInputFormat"
+           (click)="open = true">
+    <span class="clear-btn"
+          *ngIf="_selectDate !== undefined"
+          (click)="deleteDate()">
+          <mat-icon class="mat-icon">close</mat-icon>
+          </span>
+    <ng-template cdkConnectedOverlay
+                 [cdkConnectedOverlayOrigin]="d1"
+                 [cdkConnectedOverlayOpen]="open">
+      <div>
+        <bs-daterangepicker-inline [bsValue]="_selectDate"
+                                   (bsValueChange)="changeDate($event)"
+                                   [minDate]="minDate"
+                                   [maxDate]="maxDate"
+                                   [bsConfig]="_bsConfig">
+        </bs-daterangepicker-inline>
+      </div>
+      <div *ngIf="open"
+           class="overlay-bg"
+           (click)="open = false"></div>
+    </ng-template>
+  </div>
+  <button class="btn btn-outline-secondary"
+          *ngIf="preNext"
+          (click)="moveToRange('next')"
+          [ngClass]="size && size !== '' ? 'btn-' + size : ''">
+    <i class="fa fa-angle-right"></i>
+  </button>
+</div>
+
+<!-- EN: range picker -->
+

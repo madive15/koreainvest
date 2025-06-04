@@ -1,0 +1,56 @@
+<div class="form-group dtk-slider">
+  <label [ngClass]="labelClass">{{label}}</label>
+  <ng-container *ngIf="_mode !== 'range'">
+    <div class="dtk-slider-wrap">
+      <mat-slider class="dtk-mat-slider" [min]="_min"
+                  [discrete]="true"
+                  [step]="_step"
+                  [displayWith]="formatLabel"
+                  [max]="_max" style="width:100%;">
+        <input [(ngModel)]="_value" (ngModelChange)="valueChanged()" matSliderThumb />
+      </mat-slider>
+      <div class="dtk-slider-input">
+          <span class="form-control">
+            <span class="dtk-slider-input-value"
+                  [attr.contenteditable]="!_disabled"
+                  [textContent]="_value"
+                  (keydown)="checkNumber($event, 'value')"
+                  (blur)="changeValue($event, 'value')"></span>
+            <span class="dtk-slider-input-unit" *ngIf="unit && unit !== ''">{{unit}}</span>
+          </span>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="_mode === 'range'">
+    <div class="dtk-slider-wrap">
+      <div class="dtk-slider-input from">
+          <span class="form-control">
+            <span class="dtk-slider-input-value"
+                  [attr.contenteditable]="!_disabled"
+                  [textContent]="_value"
+                  (keydown)="checkNumber($event, 'value')"
+                  (blur)="changeValue($event, 'value')"></span>
+            <span class="dtk-slider-input-unit" *ngIf="unit && unit !== ''">{{unit}}</span>
+          </span>
+      </div>
+      <mat-slider class="dtk-mat-slider" [min]="_min"
+                  [discrete]="true"
+                  [step]="_step"
+                  [displayWith]="formatLabel"
+                  [max]="_max" style="width:100%;">
+        <input [(ngModel)]="_value" (ngModelChange)="valueChanged()" matSliderStartThumb />
+        <input [(ngModel)]="_highValue" (ngModelChange)="highValueChanged()" matSliderEndThumb>
+      </mat-slider>
+      <div class="dtk-slider-input">
+          <span class="form-control">
+            <span class="dtk-slider-input-value"
+                  [attr.contenteditable]="!_disabled"
+                  [textContent]="_highValue"
+                  (keydown)="checkNumber($event, 'highValue')"
+                  (blur)="changeValue($event, 'highValue')"></span>
+            <span class="dtk-slider-input-unit" *ngIf="unit && unit !== ''">{{unit}}</span>
+          </span>
+      </div>
+    </div>
+  </ng-container>
+</div>
